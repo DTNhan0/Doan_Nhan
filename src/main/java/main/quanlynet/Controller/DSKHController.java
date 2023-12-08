@@ -24,12 +24,9 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class DSKHController implements Initializable {
-    DSKHDAO themKhachHangVaoDB = new DSKHDAO();
-    DSKHDAO LayDuLieuTuDBChoVaoDSKH = new DSKHDAO();
-    DSKHDAO xoaKhachHangKhoiDB = new DSKHDAO();
-    DSKHDAO capNhatKhachHangTrongDB = new DSKHDAO();
+    DSKHDAO Database = new DSKHDAO();
     public boolean checkAdmin = false;
-    List<KhachHang> DSKH = LayDuLieuTuDBChoVaoDSKH.layKhachHangtuDBS();
+    List<KhachHang> DSKH = Database.layKhachHangtuDBS();
     @FXML
     private TableView <KhachHang> BangDSKH;
 
@@ -148,7 +145,7 @@ public class DSKHController implements Initializable {
         DSKH.add(khMoi);
 
         // Thêm vào cơ sở dữ liệu
-        themKhachHangVaoDB.themKhachHangVaoDB(khMoi, checkAdmin);
+        Database.themKhachHangVaoDB(khMoi, checkAdmin);
     }
     @FXML
     private void xoaTaiKhoan() {
@@ -166,7 +163,7 @@ public class DSKHController implements Initializable {
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     // Xóa khỏi cơ sở dữ liệu
-                    xoaKhachHangKhoiDB.xoaKhachHangKhoiDB(selectedKhachHang);
+                    Database.xoaKhachHangKhoiDB(selectedKhachHang);
 
                     // Xóa khỏi danh sách DSKH
                     DSKH.remove(selectedKhachHang);
@@ -203,7 +200,7 @@ public class DSKHController implements Initializable {
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     // Cập nhật thông tin trong cơ sở dữ liệu
-                    capNhatKhachHangTrongDB.capNhatKhachHangTrongDB(selectedKhachHang, TaiKhoanTF.getText(), PassTF.getText(), HangTVTF.getText(), checkAdmin);
+                    Database.capNhatKhachHangTrongDB(selectedKhachHang, TaiKhoanTF.getText(), PassTF.getText(), HangTVTF.getText(), checkAdmin);
 
                     // Cập nhật lại thông tin trong danh sách DSKH
                     capNhatThongTinTaiKhoan(selectedKhachHang);
