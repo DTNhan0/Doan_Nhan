@@ -1,0 +1,5 @@
+.Button:hover{
+    -fx-background-color: linear-gradient(to top, #D9AFD9 0%, #97D9E1 100%);
+    -fx-border-color: WHITE;
+    -fx-border-width: 0px 0px 0px 4px;
+}
