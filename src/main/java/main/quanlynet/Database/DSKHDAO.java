@@ -10,6 +10,15 @@ import java.util.List;
 
 public class DSKHDAO {
     List <KhachHang> DSkh = new ArrayList<>();
+
+    public List<KhachHang> getDSkh() {
+        return DSkh;
+    }
+
+    public void setDSkh(List<KhachHang> DSkh) {
+        this.DSkh = DSkh;
+    }
+
     public List <KhachHang> layKhachHangtuDBS() {
 
         Connection con = new MainConnection().getConnection();
