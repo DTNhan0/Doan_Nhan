@@ -143,7 +143,7 @@ public class DSKHController implements Initializable {
 
         // Thêm vào danh sách DSKH
         DSKH.add(khMoi);
-
+        Database.setDSkh(DSKH);
         // Thêm vào cơ sở dữ liệu
         Database.themKhachHangVaoDB(khMoi, checkAdmin);
     }
@@ -167,7 +167,7 @@ public class DSKHController implements Initializable {
 
                     // Xóa khỏi danh sách DSKH
                     DSKH.remove(selectedKhachHang);
-
+                    Database.setDSkh(DSKH);
                     // Cập nhật lại TableView
                     BangDSKH.getItems().remove(selectedIndex);
                 }
@@ -204,6 +204,7 @@ public class DSKHController implements Initializable {
 
                     // Cập nhật lại thông tin trong danh sách DSKH
                     capNhatThongTinTaiKhoan(selectedKhachHang);
+                    Database.setDSkh(DSKH);
 
                     // Cập nhật lại TableView
                     BangDSKH.refresh();
